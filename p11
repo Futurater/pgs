@@ -1,0 +1,113 @@
+🔹 Step 1: Login to Azure Portal
+
+Open browser and visit:
+
+Microsoft Azure Portal
+
+Login using your Microsoft account.
+
+🔹 Step 2: Create Azure Web App
+
+After logging into Azure Portal:
+
+Go to:
+
+Create a Resource → Web App
+Fill the Required Details
+
+Enter the following information:
+
+Field	Example Value
+Subscription	Your Azure Subscription
+Resource Group	Create new or select existing
+App Name	mywebappdemo
+Publish	Code
+Runtime Stack	Java / Tomcat / Java Version
+Operating System	Linux or Windows
+Region	Central India
+Configure App Service Plan
+
+Azure automatically creates or selects an App Service Plan.
+
+Click:
+
+Review + Create
+
+Then click:
+
+Create
+
+Deployment will start.
+
+🔹 Step 3: Verify Web App Creation
+
+After deployment completes:
+
+Click:
+
+Go to Resource
+
+You will see the Azure Web App dashboard.
+
+Copy the application URL:
+
+https://<app-name>.azurewebsites.net
+
+Open it in browser to verify the Web App is running.
+
+🔹 Step 4: Create Azure Key Vault
+
+In Azure Portal:
+
+Go to:
+
+Create a Resource → Key Vault
+Enter Key Vault Details
+
+Fill the following fields:
+
+Field	Example Value
+Subscription	Your Azure Subscription
+Resource Group	Existing or New
+Key Vault Name	mykeyvaultdemo
+Region	Central India
+Pricing Tier	Standard
+
+Click:
+
+Review + Create
+
+Then click:
+
+Create
+
+Azure will deploy the Key Vault.
+
+🔹 Step 5: Add Secret to Key Vault
+
+Open the created Key Vault.
+
+Navigate to:
+
+Secrets → Generate/Import
+
+Enter:
+
+Field	Example
+Upload Options	Manual
+Name	DB_PASSWORD
+Value	admin123
+
+Click:
+
+Create
+
+Secret is now securely stored inside Azure Key Vault.
+
+🔹 Step 6: Verify Key Vault
+
+Open:
+
+Key Vault → Secrets
+
+Verify that the secret is successfully added.
