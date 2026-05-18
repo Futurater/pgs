@@ -1,0 +1,124 @@
+Step 1: Open Azure DevOps
+
+Open:
+
+Azure DevOps
+
+Login using Microsoft account.
+
+Step 2: Create Project
+Click New Project
+Enter:
+Project Name
+Description
+Select:
+Private/Public
+Click Create
+Step 3: Prepare Maven/Gradle Project
+Maven Structure
+project/
+ ├── pom.xml
+ └── src/
+Gradle Structure
+project/
+ ├── build.gradle
+ └── src/
+Step 4: Push Project to GitHub
+git init
+
+git checkout -b devops
+
+git add .
+
+git commit -m "Initial commit"
+
+git remote add origin <repository-url>
+
+git push -u origin devops
+Step 5: Open Azure Repos
+
+Go to:
+
+Repos → Files
+
+Observe repository files.
+
+Step 6: Create Pipeline
+
+Go to:
+
+Pipelines → Create Pipeline
+Step 7: Select Repository Source
+
+Choose:
+
+GitHub
+OR
+Azure Repos Git
+
+Authorize access if needed.
+
+Step 8: Select Repository
+
+Select your repository and click:
+
+Select
+Step 9: Configure Pipeline
+
+Choose:
+
+Starter Pipeline
+
+Azure DevOps automatically detects:
+
+Maven project
+OR
+Gradle project
+Step 10: Add YAML File
+Maven YAML
+trigger:
+- main
+
+pool:
+  vmImage: ubuntu-latest
+
+steps:
+- task: Maven@4
+  inputs:
+    mavenPomFile: 'pom.xml'
+    goals: 'clean package'
+Step 11: Save Pipeline
+
+Click:
+
+Save and Run
+Step 12: Execute Pipeline
+
+Pipeline automatically:
+
+Downloads source code
+Builds project
+Runs tests
+Step 13: Monitor Logs
+
+Observe:
+
+Compilation logs
+Dependency download
+Build status
+Step 14: Run Unit Tests
+
+Example output:
+
+Tests Run: 5
+Failures: 0
+BUILD SUCCESS
+Step 15: Generate Reports
+
+Generated reports:
+
+Test reports
+Build reports
+Artifact details
+Step 16: Verify Status
+Pipeline Status: SUCCESS
