@@ -1,80 +1,198 @@
-Step 1: Create Maven Project
-mkdir program2
-cd program2
+Step 1: Create a Maven Project
 
-mvn archetype:generate -DgroupId=com.example -DartifactId=myapp -DarchetypeArtifactId=maven-archetype-quickstart -DinteractiveMode=false
-Step 2: pom.xml
+Open Command Prompt and run:
+
+mvn archetype:generate -DgroupId=com.example -DartifactId=maven-example -DarchetypeArtifactId=maven-archetype-quickstart -DinteractiveMode=false
+
+This command creates a Maven project named maven-example.
+
+Step 2: Navigate to Project Folder
+cd maven-example
+Step 3: Open and Edit pom.xml File
+
+Open the pom.xml file:
+
+notepad pom.xml
+
+Replace the content with:
+
 <?xml version="1.0" encoding="UTF-8"?>
-
 <project xmlns="http://maven.apache.org/POM/4.0.0"
          xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
-         xsi:schemaLocation="http://maven.apache.org/POM/4.0.0
+         xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 
          http://maven.apache.org/xsd/maven-4.0.0.xsd">
 
     <modelVersion>4.0.0</modelVersion>
 
     <groupId>com.example</groupId>
-    <artifactId>myapp</artifactId>
+    <artifactId>maven-example</artifactId>
     <version>1.0-SNAPSHOT</version>
 
     <dependencies>
         <dependency>
             <groupId>junit</groupId>
             <artifactId>junit</artifactId>
-            <version>4.13.2</version>
+            <version>4.12</version>
             <scope>test</scope>
         </dependency>
     </dependencies>
 
+    <build>
+        <plugins>
+            <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-compiler-plugin</artifactId>
+                <version>3.8.1</version>
+
+                <configuration>
+                    <source>1.8</source>
+                    <target>1.8</target>
+                </configuration>
+
+            </plugin>
+        </plugins>
+    </build>
+
 </project>
-Step 3: App.java
+
+Save and close the file.
+
+Step 4: Create App.java File
+
+Navigate to:
+
+src/main/java/com/example/
+
+Open App.java and replace the content with:
+
 package com.example;
 
 public class App {
 
-    public int add(int a, int b) {
-        return a + b;
-    }
-
     public static void main(String[] args) {
 
-        App app = new App();
+        System.out.println("Hello, Maven");
+        System.out.println("This is the simple realworld example....");
 
-        int result = app.add(2, 3);
+        int a = 5;
+        int b = 10;
 
-        System.out.println("2 + 3 = " + result);
-        System.out.println("Application executed successfully!");
+        System.out.println("Sum of " + a + " and " + b + " is " + sum(a, b));
+    }
+
+    public static int sum(int x, int y) {
+        return x + y;
     }
 }
-Step 4: AppTest.java
-package com.example;
 
-import org.junit.Assert;
-import org.junit.Test;
+Save the file.
 
-public class AppTest {
+Step 5: Build the Maven Project
 
-    @Test
-    public void testAdd() {
+Make sure you are inside the project folder:
 
-        App app = new App();
+cd maven-example
 
-        int result = app.add(2, 3);
+Run:
 
-        System.out.println("Running test: 2 + 3 = " + result);
+mvn clean install
 
-        Assert.assertEquals(5, result);
-    }
+This command:
+
+Cleans old files
+Compiles source code
+Runs tests
+Builds the JAR file
+Step 6: Run the Maven Project
+
+Execute the application using:
+
+mvn exec:java -Dexec.mainClass="com.example.App"
+Maven Output
+Hello, Maven
+This is the simple realworld example....
+Sum of 5 and 10 is 15
+Step 7: Migrate Maven Project to Gradle
+
+Inside the same project directory, run:
+
+gradle init
+
+You will see:
+
+Found a Maven build. Generate a Gradle build from this? (default: yes)
+
+Type:
+
+yes
+
+Next:
+
+Select build script DSL:
+1: Kotlin
+2: Groovy
+
+Type:
+
+2
+
+Next:
+
+Generate build using new APIs and behavior? (default: no)
+
+Type:
+
+no
+
+Gradle configuration files will be generated.
+
+Step 8: Edit build.gradle File
+
+Open:
+
+notepad build.gradle
+
+Replace the content with:
+
+plugins {
+    id 'java'
 }
-Step 5: Commands
-Compile Project
-mvn compile
-Run Test
-mvn test
-Package Project
-mvn package
-Run Application
-java -cp target/myapp-1.0-SNAPSHOT.jar com.example.App
-Output
-2 + 3 = 5
-Application executed successfully!
+
+group = 'com.example'
+version = '1.0-SNAPSHOT'
+
+repositories {
+    mavenCentral()
+}
+
+dependencies {
+    testImplementation 'junit:junit:4.12'
+}
+
+task run(type: JavaExec) {
+    main = 'com.example.App'
+    classpath = sourceSets.main.runtimeClasspath
+}
+
+Save the file.
+
+Step 9: Build the Gradle Project
+
+Run:
+
+gradlew build
+
+This command:
+
+Compiles the Java source code
+Runs tests
+Creates build files
+Step 10: Run the Gradle Application
+
+Execute:
+
+gradlew run
+Gradle Output
+Hello, Maven
+This is the simple realworld example....
+Sum of 5 and 10 is 15
