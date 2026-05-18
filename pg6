@@ -1,0 +1,117 @@
+🔹 Step 1: Open Jenkins Dashboard
+
+Open browser and visit:
+
+http://localhost:8080
+
+Login using Jenkins credentials.
+
+🔹 Step 2: Create New Project
+
+From Jenkins Dashboard:
+
+Click:
+
+New Item
+
+Enter:
+
+Item Name → CI-Pipeline
+
+Select:
+
+Freestyle Project
+
+Click:
+
+OK
+🔹 Step 3: Configure Source Code Management (Git Integration)
+
+Scroll to:
+
+Source Code Management
+
+Select:
+
+Git
+
+Enter Repository URL:
+
+https://github.com/username/project.git
+
+Specify branch name:
+
+main
+🔹 Step 4: Configure Build Tool (Maven Integration)
+
+Scroll to:
+
+Build
+
+Click:
+
+Add Build Step → Invoke top-level Maven targets
+
+In Goals field enter:
+
+clean install
+
+This command:
+
+Cleans old build files
+Compiles source code
+Runs tests
+Creates build artifact
+
+Click:
+
+Advanced
+
+Enter:
+
+pom.xml
+
+to read the Maven configuration file.
+
+🔹 Optional: Gradle Integration
+
+Instead of Maven:
+
+Choose:
+
+Invoke Gradle Script
+
+Enter Gradle task:
+
+build
+🔹 Step 5: Save the Project
+
+Click:
+
+Save
+🔹 Step 6: Run CI Pipeline
+
+From Jenkins Dashboard:
+
+Click:
+
+Build Now
+
+Jenkins starts the build process.
+
+🔹 Step 7: View Console Output
+
+Click:
+
+Build #1
+
+Then click:
+
+Console Output
+✅ Expected Output (Maven Example)
+Started by user admin
+Cloning the repository
+Building project using Maven
+Running tests...
+BUILD SUCCESS
+Finished: SUCCESS
