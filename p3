@@ -98,8 +98,8 @@ public class AdditionOperationTest {
 
 Step 5: Run Commands
 Build Project
-gradle build
+          gradle build
 Run Project
-gradle run
+          gradle run
 Test Project
-gradle test
+          gradle test
