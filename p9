@@ -1,0 +1,68 @@
+Step 1: Open Azure DevOps
+
+Open:
+
+Azure DevOps Official Website
+
+Step 2: Sign In
+Click Start free
+Sign in using Microsoft account
+Step 3: Create Organization
+Enter organization name
+Select region
+Click Continue
+Step 4: Create New Project
+
+Click:
+
+New Project
+
+Enter:
+
+Project Name
+Description
+Visibility:
+Private/Public
+
+Click:
+
+Create
+Step 5: Explore Dashboard
+
+Observe:
+
+Boards
+Repos
+Pipelines
+Test Plans
+Artifacts
+Step 6: Create Repository
+
+Go to:
+
+Repos → Files
+
+Initialize repository with:
+
+README file
+Step 7: Create Basic Pipeline
+
+Go to:
+
+Pipelines → Create Pipeline
+
+Select:
+
+Git repository
+Starter pipeline
+Step 8: Run Pipeline
+
+Click:
+
+Run
+
+Observe:
+
+Build execution
+Logs
+Status
